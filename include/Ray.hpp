@@ -15,12 +15,12 @@ namespace RayTracer {
     class Ray {
         public:
             Ray() = default;
-            Ray(const Math::Point3D &point, const Math::Vector3D &vector);
+            Ray(const Math::Point3D &center, const Math::Vector3D &vector);
             Ray(const Ray &ray);
             Ray &operator=(Ray ray);
             ~Ray();
 
-            Math::Point3D _point;
+            Math::Point3D _center;
             Math::Vector3D _vector;
 
         protected:
