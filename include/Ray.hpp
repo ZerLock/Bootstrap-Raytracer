@@ -39,7 +39,35 @@ namespace RayTracer {
             Math::Point3D _center;
             double _radius;
     };
-}
 
+    class Rectangle3D {
+        public:
+            Rectangle3D();
+            ~Rectangle3D();
+
+            Math::Point3D _origin;
+            Math::Vector3D _bottom_side;
+            Math::Vector3D _left_side;
+
+            Math::Point3D pointAt(double u, double v);
+
+        protected:
+        private:
+    };
+
+    class Camera {
+        public:
+            Camera();
+            ~Camera();
+
+            Math::Point3D _origin;
+            Rectangle3D _screen;
+
+            Ray ray(double u, double v);
+
+        protected:
+        private:
+    }
+}
 
 #endif /* !RAY_HPP_ */

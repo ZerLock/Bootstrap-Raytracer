@@ -38,10 +38,32 @@ double pow(double x) {
 
 bool RayTracer::Sphere::hits(const RayTracer::Ray &ray) const
 {
-    double a = (pow(ray._vector._x) + pow(ray._vector._y) + pow(ray._vector._z));
+    double a = (Math::pow(ray._vector._x) + Math::pow(ray._vector._y) + Math::pow(ray._vector._z));
     double b = 2 * (ray._vector._x * ray._center._x + ray._vector._y * ray._center._y + ray._vector._z * ray._center._z);
-    double c = (pow(ray._center._x) + pow(ray._center._y) + pow(ray._center._z) - pow(_radius));
+    double c = (Math::pow(ray._center._x) + Math::pow(ray._center._y) + Math::pow(ray._center._z) - Math::pow(_radius));
 
-    auto d = pow(b) - 4 * a * c;
+    auto d = Math::pow(b) - 4 * a * c;
     return d < 0;
+}
+
+RayTracer::Rectangle3D::Rectangle3D()
+    : _origin(), _bottom_side(), _left_side()
+{}
+
+RayTracer::Rectangle3D::~Rectangle3D() {}
+
+Math::Point3D RayTracer::Rectangle3D::pointAt(double u, double v)
+{
+    return Math::Point3D(u, v, _origin._z);
+}
+
+RayTracer::Camera::Camera()
+    : _origin(), _screen()
+{}
+
+RayTracer::Camera::~Camera() {}
+
+RayTracer::Ray RayTracer::Camera::ray(double u, double v)
+{
+    return RayTracer::Ray(_origin, Math::Vector3D(u, v, _origin._z));
 }

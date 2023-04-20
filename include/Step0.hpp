@@ -14,17 +14,18 @@
 
 namespace Math {
 
+    static double pow(const double x);
+
     class Error: public std::exception {
-                public:
-                    Error(const std::string &msg);
-                    ~Error();
+        public:
+            Error(const std::string &msg);
+            ~Error();
+            const char *what() const noexcept;
 
-                    const char *what() const noexcept;
-
-                protected:
-                private:
-                    std::string _msg;
-            };
+        protected:
+        private:
+            std::string _msg;
+    };
 
     class Vector3D {
         public:

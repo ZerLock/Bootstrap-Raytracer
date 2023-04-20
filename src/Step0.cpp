@@ -7,6 +7,11 @@
 
 #include "Step0.hpp"
 
+static double Math::pow(const double x)
+{
+    return x * x;
+}
+
 Math::Vector3D::Vector3D(double x, double y, double z)
     : _x(x), _y(y), _z(z)
 {}
